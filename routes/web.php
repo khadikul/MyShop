@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Auth;
@@ -27,3 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/web-admin', [AdminController::class, 'adminHome']);
 Route::get('/admin-login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm']);
 Route::post('/admin-login', [App\Http\Controllers\Admin\LoginController::class, 'login']);
+
+// =========================Category Route ===============
+Route::get('/web-admin/category', [CategoryController::class, 'categoryPage']);

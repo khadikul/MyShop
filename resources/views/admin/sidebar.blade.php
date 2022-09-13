@@ -71,7 +71,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{url('web-admin/category')}}">
             <i class="fas fa-tags"></i>
             <span>Product Category</span>
         </a>
