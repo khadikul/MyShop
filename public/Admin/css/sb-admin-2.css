@@ -41,6 +41,13 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+@font-face {
+  font-family: 'summernote';
+  src: url('../font/summernote.ttf');
+  src: url('../font/summernote.eot'),
+       url('../font/summernote.woff')
+}
+
 *,
 *::before,
 *::after {
@@ -11278,4 +11285,39 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+  width: 100% !important;
+}
+
+.futureImage label{
+  text-decoration: underline;
+  color: #224abe;
+}
+
+.futureImage label:hover{
+  cursor: pointer;
+}
+
+.futureImgPreview img{
+  display: none;
+  width: 100%;
+}
+
+.product-price{
+  width: 50%;
+}
+
+.product-sku, .product-quantity{
+  width: 50%;
+}
+
+.product-stock .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+  width: 35% !important;
+}
+
+.gallary_preview img{
+  width: 80%;
+  display: none;
 }
