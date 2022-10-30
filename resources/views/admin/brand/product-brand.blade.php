@@ -2,7 +2,6 @@
 
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800 pb-5">Product Branding</h1>
-
     <div class="row">
         <div class="col-lg-8 col-md-8">
             <div class="card shadow mb-4">

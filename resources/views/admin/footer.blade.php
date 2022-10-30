@@ -18,6 +18,11 @@
 <script src="{{asset('Admin/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('Admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('Admin/js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('Admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('Admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('Admin/js/demo/datatables-demo.js')}}"></script>
+<script src="{{asset('Assets/js/tostr.min.js')}}"></script>
+
 
 <!-- Core plugin JavaScript-->
 <script src="{{asset('Admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
@@ -36,6 +41,9 @@
     $(document).ready(function(){
         $('#productDescription').summernote();
         $('#productShortDes').summernote();
+        $(['data-toggle="Edit"']).tooltip();
+        $(['data-toggle="Delete"']).tooltip();
+        $(['data-toggle="View"']).tooltip();
     });
 
     function showPreview(event){
@@ -82,6 +90,24 @@
             preview.style.display = "block";
         }
     }
+
+    @if (session()->has('couponSuccess'))
+        toastr.options = 
+        {
+            "closeButton": true,
+            "progressBar": true,
+        }
+        toastr.success("{{session()->get('couponSuccess')}}");
+    @endif
+
+    @if (session()->has('couponDelete'))
+        toastr.options = 
+        {
+            "closeButton": true,
+            "progressBar": true,
+        }
+        toastr.success("{{session()->get('couponDelete')}}");
+    @endif
 
 </script>
 </body>

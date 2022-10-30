@@ -11305,6 +11305,10 @@ body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
 
+.futureImgPreviews img{
+  width: 100%;
+}
+
 .product-price{
   width: 50%;
 }
@@ -11320,4 +11324,16 @@ body.sidebar-toggled footer.sticky-footer {
 .gallary_preview img{
   width: 80%;
   display: none;
+}
+
+.product-action{
+  display: none;
+}
+
+.products-row:hover .product-action{
+  display: block;
+}
+
+.edit_gallary_preview img{
+  width: 80%;
 }

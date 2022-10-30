@@ -79,8 +79,47 @@
     <script src="../Assets/js/jquery.slicknav.js"></script>
     <script src="../Assets/js/mixitup.min.js"></script>
     <script src="../Assets/js/owl.carousel.min.js"></script>
+    <script src="{{asset('Assets/js/tostr.min.js')}}"></script>
     <script src="../Assets/js/main.js"></script>
 
+    <script>
+        @if (session()->has('cartMessage'))
+            toastr.options = 
+            {
+                "closeButton": true,
+                "progressBar": true,
+            }
+            toastr.success("{{session()->get('cartMessage')}}");
+        @endif
+
+        @if (session()->has('cartDelete'))
+            toastr.options = 
+            {
+                "closeButton": true,
+                "progressBar": true,
+            }
+            toastr.success("{{session()->get('cartDelete')}}");
+        @endif
+
+        @if (session()->has('cartUpdate'))
+            toastr.options = 
+            {
+                "closeButton": true,
+                "progressBar": true,
+            }
+            toastr.success("{{session()->get('cartUpdate')}}");
+        @endif
+
+        @if (session()->has('couponApply'))
+            toastr.options = 
+            {
+                "closeButton": true,
+                "progressBar": true,
+            }
+            toastr.success("{{session()->get('couponApply')}}");
+        @endif
+
+    </script>
 
 </body>
 

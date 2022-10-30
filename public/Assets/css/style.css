@@ -1919,6 +1919,7 @@ ol {
 .shoping__cart__table table tbody tr td.shoping__cart__item img {
 	display: inline-block;
 	margin-right: 25px;
+	width: 15%;
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item h5 {
@@ -1975,6 +1976,7 @@ ol {
 	color: #6f6f6f;
 	padding: 14px 30px 12px;
 	background: #f5f5f5;
+	border: none;
 }
 
 .primary-btn.cart-btn span {
@@ -3465,4 +3467,12 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+}
+
+.toast {
+    top: 50px !important;
+}
+
+.decrement, .increment{
+	cursor: pointer;
 }

@@ -7,6 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Ogani | Template</title>
 
     <!-- Google Font -->
@@ -20,27 +21,23 @@
     <link rel="stylesheet" href="../Assets/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="../Assets/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../Assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('Assets/css/tostr.min.css')}}" type="text/css">
     <link rel="stylesheet" href="../Assets/css/style.css" type="text/css">
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="../Assets/img/logo.png" alt=""></a>
+            <a href="{{'/'}}"><img src="../Assets/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -59,7 +56,7 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="{{url('shop')}}">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
@@ -143,14 +140,14 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="../Assets/img/logo.png" alt=""></a>
+                        <a href="{{'/'}}"><img src="../Assets/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li class="active"><a href="{{'/'}}">Home</a></li>
+                            <li><a href="{{url('shop')}}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -166,11 +163,18 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
+                        @php
+                            $total = App\Models\Cart::all()->where('user_ip', request()->ip())->sum(function($e){
+                                return $e->product_price * $e->product_quantity;
+                            });
+
+                            $quantityCount = App\Models\Cart::all()->where('user_ip', request()->ip())->sum('product_quantity');
+                        @endphp
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="{{url('cart')}}"><i class="fa fa-shopping-bag"></i> <span>{{$quantityCount}}</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">item: <span>${{$total}}</span></div>
                     </div>
                 </div>
             </div>

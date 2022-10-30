@@ -8,7 +8,7 @@ use Laravel\Ui\Presets\React;
 
 class BrandController extends Controller
 {
-        /**
+    /**
     * Create a new controller instance.
     *
     * @return void

@@ -203,8 +203,8 @@
 		Quantity change
 	--------------------- */
     var proQty = $('.pro-qty');
-    proQty.prepend('<span class="dec qtybtn">-</span>');
-    proQty.append('<span class="inc qtybtn">+</span>');
+    proQty.prepend('<span class="dec qtybtn quantityDecrease">-</span>');
+    proQty.append('<span class="inc qtybtn quantityIncrease">+</span>');
     proQty.on('click', '.qtybtn', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
@@ -222,3 +222,72 @@
     });
 
 })(jQuery);
+
+
+//laravel ajax development part
+
+$(document).ready(function(){
+
+    $('.quantityIncrease').click(function(e){
+        e.preventDefault();
+
+        var cartID = $(this).closest('.cartPage').find('.productID').val();
+        var productQuantity = $(this).closest('.cartPage').find('.productQty').val();
+
+        var data = {
+            'cartID' : cartID,
+            'productQuantity' : productQuantity,
+        };
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        $.ajax({
+            url : '/cart-quantity-increase',
+            type : 'POST',
+            data : data,
+            success: function(response){
+                setTimeout(function(){
+                    window.location.reload(1);
+                },5000);
+                toastr.options = {"closeButton": true, "progressBar": true }
+                toastr.success(response.status);
+            }
+        })
+    });
+
+    $('.quantityDecrease').click(function(e){
+        e.preventDefault();
+
+        var cartID = $(this).closest('.cartPage').find('.productID').val();
+        var productQuantity = $(this).closest('.cartPage').find('.productQty').val();
+
+        var data = {
+            'cartID' : cartID,
+            'productQuantity' : productQuantity,
+        };
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        $.ajax({
+            url : '/cart-quantity-decrease',
+            type : 'POST',
+            data : data,
+            success: function(response){
+                setTimeout(function(){
+                    window.location.reload(1);
+                },5000);
+                toastr.options = {"closeButton": true, "progressBar": true }
+                toastr.success(response.status);
+            }
+        })
+    });
+
+});
